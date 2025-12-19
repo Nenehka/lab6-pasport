@@ -5,6 +5,7 @@ use App\Http\Controllers\AlbumController;
 use App\Models\User;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FriendController;
+use App\Http\Controllers\ApiTokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/feed', [AlbumController::class, 'feed'])
         ->name('feed');
+
+    Route::get('/profile/api-token', [ApiTokenController::class, 'show'])
+        ->name('profile.api-token');
+
+    Route::post('/profile/api-token', [ApiTokenController::class, 'store'])
+        ->name('profile.api-token.generate');
 });
 
 require __DIR__.'/auth.php';

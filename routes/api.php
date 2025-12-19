@@ -1,19 +1,19 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AlbumApiController;
+use App\Http\Controllers\Api\CommentApiController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::middleware('auth:api')->group(function () {
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    // Albums
+    Route::get('/albums', [AlbumApiController::class, 'index']);
+    Route::get('/albums/{album}', [AlbumApiController::class, 'show']);
+    Route::post('/albums', [AlbumApiController::class, 'store']);
+    Route::put('/albums/{album}', [AlbumApiController::class, 'update']);
+
+    // Comments
+    Route::get('/albums/{album}/comments', [CommentApiController::class, 'index']);
+    Route::post('/albums/{album}/comments', [CommentApiController::class, 'store']);
+    Route::put('/comments/{comment}', [CommentApiController::class, 'update']);
 });

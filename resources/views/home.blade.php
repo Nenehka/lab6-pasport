@@ -23,10 +23,10 @@
             <a href="{{ route('albums.index') }}" class="btn btn-primary">
                 Перейти к альбомам
             </a>
-            <a href="{{ route('feed') }}" class="btn btn-outline-primary">
+            <a href="{{ route('feed') }}" class="btn btn-primary">
                 Лента друзей
             </a>
-            <a href="{{ route('users.index') }}" class="btn btn-outline-primary">
+            <a href="{{ route('users.index') }}" class="btn btn-primary">
                 Список пользователей
             </a>
         </div>
